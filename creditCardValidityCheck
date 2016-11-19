@@ -1,0 +1,29 @@
+while True:
+  try:
+     x = input("vloz cislo platobnej karty")
+     break   
+  except ValueError:
+     print("zle nedobre")
+
+odd = 0
+even = 0
+
+x = x[::-1]
+
+for i in x[0::2]:
+  odd = odd + int(i)
+
+for i in x[1::2]:
+  i = int(i)
+  i = i*2
+  if i>9:
+    i -= 9
+  even = even + int(i)
+
+x = odd + even
+if x%10 == 0:
+  print("karta je validna")
+else:
+  print("invalid")
+
+print(x)
