@@ -1,0 +1,12 @@
+x = int(input("vloz cislo na konverziu do binarnej sustavy"))
+x = abs(x)
+out = ""
+
+if x==0:
+  print(0)
+
+while x != 0:
+    out = str(x%2) + out
+    x = x//2  
+
+print(out)
