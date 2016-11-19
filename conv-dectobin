@@ -1,5 +1,10 @@
-x = int(input("vloz cislo na konverziu do binarnej sustavy"))
-x = abs(x)
+while True:
+  try:
+     x = int(input("vloz cislu na konverziu do binarnej sustavy"))
+     break
+  except ValueError:
+     print("zle nedobre")
+
 out = ""
 
 if x==0:
