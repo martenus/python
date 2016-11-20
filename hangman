@@ -1,0 +1,53 @@
+import re
+import random
+dictionaryOfWords = ["mama","liter","meter","kilogram","formula","mikrokozmos"]
+
+generatedWord = random.choice(dictionaryOfWords).lower()
+
+randomWord = []
+guessedWord = []
+
+for i in range(0,len(generatedWord)):
+  randomWord.append(generatedWord[i])
+  guessedWord.append('?')
+
+check = True
+pocetPokusov = len(generatedWord)
+
+print("Vitaj v hre Hangman, uhádni slovo ;-) \n")
+
+while check == True:
+  if pocetPokusov == 0:
+    break
+  print("Počet dostupných pokusov:", pocetPokusov)
+  
+  check = False
+  print("Hádaš slovo:", guessedWord)
+  try:
+    p = (input("zadaj písmeno"))[0]
+    if not re.match('[A-Za-z]',p):
+      raise ValueError()
+  except ValueError:
+    print("Pomýlil si sa, daj písmenko")
+  print("Zadal si",p)
+  
+  for i in range(0,len(randomWord)):
+    if p == randomWord[i]:
+      guessedWord[i] = randomWord[i]
+  
+  if p not in randomWord:
+    pocetPokusov -= 1
+    print("Písmeno si neuhádol")
+  else:
+    print("Uhádol si písmeno:",p)
+    
+  for i in guessedWord:
+    if i == '?':
+      check = True
+  
+  print("")
+  
+if pocetPokusov == 0:
+  print("Prehral si")
+else:
+  print("Hurá, uhádol si slovo:",guessedWord)
