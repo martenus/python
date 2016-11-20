@@ -1,17 +1,18 @@
-#nefunguje kontrola na binarnost cisla
-check = True
-while check == True:
+while True:
   try:
-     x = input("vloz cislu na konverziu do decimalnej sustavy")
-     check = False
+     x = input("vloz cislo na konverziu do decimalnej sustavy")
+ 
      for i in x:
-       if i != '0' or i != '1':
-         check = True
+       if i != '0' and i != '1':
+         raise ValueError('musi to byt binarne cislo')
   
      break   
 
   except ValueError:
      print("zle nedobre")
+
+
+print("konverzia pythonovou funkciou:", int(str(x),2))
 
 x = x[::-1]
 
@@ -23,4 +24,4 @@ for i in x:
   out = out + i*2**(j)
   j = j+1
 
-print(out)
+print("vysledok je:",out)
